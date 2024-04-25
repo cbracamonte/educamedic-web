@@ -1,0 +1,73 @@
+---
+// Importando el componente Card desde una ruta específica
+import Card from "@components/base/Card.astro";
+---
+
+<div
+  class="grid md:grid-cols-3 gap-x-6 gap-y-16 pt-10"
+>
+  <template x-for="course in courses" :key="course.name">
+    <div
+      class="p-4"
+      x-show=`activeCategory === 'all' || activeCategory === course.category`
+    >
+      <Card class="'p-4'">
+        <div
+          class="relative w-full h-40 rounded-lg bg-muted-200 dark:bg-muted-800"
+        >
+          <img
+            class="absolute bottom-0 inset-x-0 mx-auto w-full max-w-[170px] ptablet:max-w-[150px]"
+            :src="course.imageUrl"
+            :alt="course.name"
+          />
+        </div>
+        <div class="font-sans mt-3">
+          <h4
+            class="font-semibold text-muted-800 dark:text-muted-100"
+            x-text="course.name"
+          >
+          </h4>
+          <p class="text-sm text-muted-400" x-text="course.specialty"></p>
+        </div>
+        <div class="mt-2">
+          <p
+            class="text-sm ptablet:text-xs text-muted-500 dark:text-muted-400"
+            x-text="course.description"
+          >
+          </p>
+        </div>
+        <div class="flex items-center justify-end font-sans mt-3">
+          <!-- <div class="flex items-center gap-2">
+            <button
+              tooltip="Book appointment"
+              class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+            >
+              <i class="iconify w-4 h-4" data-icon="ph:calendar-check-duotone"
+              ></i>
+            </button>
+            <button
+              tooltip="Send message"
+              class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+            >
+              <i class="iconify w-4 h-4" data-icon="ph:chat-circle-duotone"></i>
+            </button>
+            <button
+              tooltip="View profile"
+              class="h-8 w-8 rounded-full text-muted-400 hover:text-primary-500 hover:enabled:bg-muted-100 dark:hover:enabled:bg-muted-800 flex items-center justify-center tw-accessiblity transition-colors duration-300"
+            >
+              <i class="iconify w-4 h-4" data-icon="ph:user-duotone"></i>
+            </button>
+          </div> -->
+          <div class="flex items-center justify-end gap-2">
+            <i class="iconify w-4 h-4 text-yellow-400" data-icon="uiw:star-on"
+            ></i>
+            <span
+              class="font-semibold text-xs text-muted-500 dark:text-muted-400"
+              >4.8/5</span
+            >
+          </div>
+        </div>
+      </Card>
+    </div>
+  </template>
+</div>
